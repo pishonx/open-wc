@@ -78,6 +78,7 @@ function injectCode(program, code) {
  */
 function injectStories(program, stories) {
   const storyCode = stories.map(s => s.code).reverse();
+  console.log({ storyCode })
   for (const nodes of storyCode) {
     program.body.unshift(...nodes);
   }

@@ -1,6 +1,6 @@
 import { parse as parseJs } from '@babel/parser';
 import traverse from '@babel/traverse';
-import { Parser as CmParser, Node } from './commonmark/index.js';
+import { Parser as CmParser, Node, HtmlRenderer } from './commonmark/index.js';
 
 export class Parser {
   constructor() {
@@ -41,6 +41,9 @@ export class Parser {
             name,
             codeAst: storyAst,
             displayedCode: node.literal,
+            // compatibilty
+            code: storyAst.program.body, //   const { body: code } = ast.program;
+            codeString: node.literal,
           });
           node.unlink();
         }
@@ -59,7 +62,9 @@ export class Parser {
 
     // const output = generate(jsAst, { /* options */ });
     // console.log(output);
+    const foo = new HtmlRenderer();
+    const html = foo.render(mdAst);
 
-    return { jsCode, jsAst, mdAst, stories };
+    return { jsCode, jsAst, mdAst, stories, html };
   }
 }
