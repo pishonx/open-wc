@@ -41,9 +41,6 @@ export class Parser {
             name,
             codeAst: storyAst,
             displayedCode: node.literal,
-            // compatibilty
-            code: storyAst.program.body, //   const { body: code } = ast.program;
-            codeString: node.literal,
           });
           node.unlink();
         }

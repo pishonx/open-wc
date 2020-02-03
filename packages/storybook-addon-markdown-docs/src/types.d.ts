@@ -1,21 +1,19 @@
 import { Visitor } from '@babel/core';
-import { Statement } from '@babel/types';
+import { File } from '@babel/types';
 
 export interface MarkdownResult {
   html: string;
-  code: Code;
+  jsAst: File;
   stories: Story[];
 }
-
-export type Code = Statement[];
 
 export interface Story {
   key: string;
   name: string;
-  code: Code;
-  codeString: string;
+  codeAst: File;
+  displayedCode: string;
 }
 
 export type MarkdownToMdxVisitor = Visitor<{
-  opts: { code: Code; stories: Story[] };
+  opts: { jsAst: File; stories: Story[] };
 }>;

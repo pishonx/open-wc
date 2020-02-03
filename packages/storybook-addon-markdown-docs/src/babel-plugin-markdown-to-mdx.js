@@ -4,7 +4,6 @@
 /** @typedef {import('@babel/types').Node} Node */
 /** @typedef {import('@babel/core').Visitor} Visitor */
 /** @typedef {import('./types').Story} Story */
-/** @typedef {import('./types').Code} Code */
 /** @typedef {import('./types').MarkdownToMdxVisitor} MarkdownToMdxVisitor */
 
 const {
@@ -22,10 +21,11 @@ const {
 
 /**
  * @param {Program} program
- * @param {Code} code
+ * @param {File} file
  */
-function injectCode(program, code) {
+function injectCode(program, file) {
   // ensure there is a default export
+  const code = file.program.body;
   const [defaultExport] = code.filter(n => isExportDefaultDeclaration(n));
   if (!defaultExport || !isExportDefaultDeclaration(defaultExport)) {
     throw new Error('Markdown must have a default export');
@@ -77,8 +77,7 @@ function injectCode(program, code) {
  * @param {Story[]} stories
  */
 function injectStories(program, stories) {
-  const storyCode = stories.map(s => s.code).reverse();
-  console.log({ storyCode })
+  const storyCode = stories.map(s => s.codeAst.program.body).reverse();
   for (const nodes of storyCode) {
     program.body.unshift(...nodes);
   }
@@ -89,9 +88,9 @@ function babelPluginMarkdownToMdx() {
   return {
     visitor: {
       Program(path, state) {
-        const { code, stories } = state.opts;
+        const { jsAst, stories } = state.opts;
         injectStories(path.node, stories);
-        injectCode(path.node, code);
+        injectCode(path.node, jsAst);
       },
     },
   };
