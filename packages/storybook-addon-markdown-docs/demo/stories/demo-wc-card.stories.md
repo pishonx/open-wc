@@ -7,7 +7,7 @@ export default { title: 'My docs' };
 
 # Heading 1
 
-Foo
+Foo is great
 
 ```js story
 export const JsStory = () =>
@@ -15,6 +15,8 @@ export const JsStory = () =>
     <demo-wc-card>JS Story</demo-wc-card>
   `;
 ```
+
+## Sub Headline
 
 ```js story
 export const JsStory2 = () =>
