@@ -6,7 +6,7 @@ import { Parser } from '../src/Parser.js';
 const { expect } = chai;
 
 describe('Parser', () => {
-  it('extracts only "js script" code blocks', async () => {
+  it('extracts only "js script" code blocks', () => {
     const parser = new Parser();
     const code = [];
     code.push('## Intro');
@@ -35,41 +35,41 @@ describe('Parser', () => {
   });
 });
 
-// describe.skip('Parser Overrides', () => {
-//   it('can replace a specific ', () => {
-//     const input = `
-// # Component
-// This component is so nice.
-// ## Features
-// `;
-//     const expected = `
-// # Better Component
-// So nice
-// ## Features
-// `;
-//     const parser = new Parser();
-//     parser.parse(input);
+// // describe.skip('Parser Overrides', () => {
+// //   it('can replace a specific ', () => {
+// //     const input = `
+// // # Component
+// // This component is so nice.
+// // ## Features
+// // `;
+// //     const expected = `
+// // # Better Component
+// // So nice
+// // ## Features
+// // `;
+// //     const parser = new Parser();
+// //     parser.parse(input);
 
-//     replace('# Component', '# Better Component');
-//     // replaceFromTo('# Component', '## Features');
-//   });
+// //     replace('# Component', '# Better Component');
+// //     // replaceFromTo('# Component', '## Features');
+// //   });
 
-//   it('allows for an array of override md files', async () => {
-//     const input = `
-// # Component
-// This component is so nice.
-// ## Features
-// `;
-//     const override = `
-// # Component ::overrideUntil(## Features)
-// # Better Component
-// So nice
-// `;
+// //   it('allows for an array of override md files', async () => {
+// //     const input = `
+// // # Component
+// // This component is so nice.
+// // ## Features
+// // `;
+// //     const override = `
+// // # Component ::overrideUntil(## Features)
+// // # Better Component
+// // So nice
+// // `;
 
-//     const expected = `
-// # Better Component
-// So nice
-// ## Features
-// `;
-//   });
-// });
+// //     const expected = `
+// // # Better Component
+// // So nice
+// // ## Features
+// // `;
+// //   });
+// // });

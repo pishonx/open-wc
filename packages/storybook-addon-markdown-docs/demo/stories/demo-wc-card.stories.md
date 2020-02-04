@@ -9,6 +9,8 @@ export default { title: 'My docs' };
 
 Foo is great
 
+## Story
+
 ```js story
 export const JsStory = () =>
   html`
@@ -16,7 +18,7 @@ export const JsStory = () =>
   `;
 ```
 
-## Sub Headline
+## Story
 
 ```js story
 export const JsStory2 = () =>

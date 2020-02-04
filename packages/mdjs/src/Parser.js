@@ -1,8 +1,8 @@
-import { parse as parseJs } from '@babel/parser';
 // import traverse from '@babel/traverse';
-import { Parser as CmParser, HtmlRenderer } from './commonmark/index.js';
+import { Parser as CmParser } from './commonmark/index.js';
 import { processJs } from './processJs.js';
 import { processStories } from './processStories.js';
+// import { HtmlRenderer } from './HtmlRenderer.js';
 
 export class Parser {
   constructor() {
@@ -22,7 +22,7 @@ export class Parser {
     data = processJs(data);
     data = processStories(data);
 
-    const jsAst = parseJs(data.jsCode, { sourceType: 'module' });
+    // const jsAst = parseJs(data.jsCode, { sourceType: 'module' });
     // traverse(jsAst, {
     //   ImportDeclaration(path) {
     //     path.scope.rename(path.node.specifiers[0].local.name, 'IngInput');
@@ -33,9 +33,10 @@ export class Parser {
 
     // const output = generate(jsAst, { /* options */ });
     // console.log(output);
-    const renderer = new HtmlRenderer();
-    const html = renderer.render(data.mdAst);
+    // const renderer = new HtmlRenderer();
 
-    return { ...data, jsAst, html };
+    // const html = renderer.render(data.mdAst);
+
+    return data;
   }
 }

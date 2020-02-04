@@ -1,48 +1,44 @@
-import { Node, HtmlRenderer as CmHtmlRenderer } from './commonmark/index.js';
-import { Parser } from './Parser.js';
+import { HtmlRenderer as CmHtmlRenderer } from './commonmark/index.js';
 
-export class HtmlRenderer {
+const allInvalidChars = /[^a-zA-Z0-9 ]*/g;
+
+export class HtmlRenderer extends CmHtmlRenderer {
   constructor() {
-    this.parser = new Parser();
-    this.options = {
-      storyTag: 'div',
-    };
+    super();
+    this.__counter = 0;
+    this.__givenIds = [];
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  process(parsed) {
-    let templateCounter = 0;
-    const templateStories = [];
-
-    const walker = parsed.walker();
-    let event = walker.next();
-    while (event) {
-      const { node } = event;
-      if (event.entering && node.type === 'code_block') {
-        if (node.info === 'js story') {
-          const htmlBlock = new Node('html_block');
-          htmlBlock.literal = `<div id="story-${templateCounter}"></div>`;
-          node.insertAfter(htmlBlock);
-          templateStories.push(node.literal);
-          templateCounter += 1;
-          node.unlink();
-        }
-        if (node.info === 'html story') {
-          const htmlBlock = new Node('html_block');
-          htmlBlock.literal = node.literal;
-          node.insertAfter(htmlBlock);
-          node.unlink();
-        }
+  getHeadline(text) {
+    let id = text
+      .replace(allInvalidChars, '')
+      .replace(/ /g, '-')
+      .toLowerCase();
+    if (this.__givenIds.includes(id)) {
+      let counter = 0;
+      let testId = id;
+      while (this.__givenIds.includes(testId)) {
+        counter += 1;
+        testId = `${id}-${counter}`;
       }
-      event = walker.next();
+      id = testId;
     }
-
-    return parsed;
+    this.__givenIds.push(id);
+    return id;
   }
 
-  render(parsed) {
-    const processed = this.process(parsed);
-    const foo = new CmHtmlRenderer();
-    return foo.render(processed);
+  heading(node, entering) {
+    const tagname = `h${node.level}`;
+    if (entering) {
+      const attrs = this.attrs(node);
+      if (node.firstChild) {
+        attrs.push(['id', this.getHeadline(node.firstChild.literal)]);
+      }
+      this.cr();
+      this.tag(tagname, attrs);
+    } else {
+      this.tag(`/${tagname}`);
+      this.cr();
+    }
   }
 }

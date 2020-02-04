@@ -15,6 +15,7 @@
   "homepage": "https://github.com/open-wc/open-wc/",
   "scripts": {
     "build": "rimraf dist && babel src --out-dir dist --copy-files --include-dotfiles",
+    "build:watch": "onchange 'src/**/*.js' 'test/**/*.js' -- npm run build --silent",
     "prepublishOnly": "npm run build && ../../scripts/insert-header.js",
     "start": "npm run build && node ./dist/create.js",
     "test": "npm run test:node",
