@@ -20,7 +20,9 @@ export const JsStory = () =>
 
 ## Story
 
-```js story
+with preview
+
+```js preview-story
 export const JsStory2 = () =>
   html`
     <demo-wc-card>JS Story with preview</demo-wc-card>

@@ -2,6 +2,20 @@ import { parse as parseJs } from '@babel/parser';
 import traverse from '@babel/traverse';
 import { Node } from './commonmark/index.js';
 
+function extractStoryData(codeString) {
+  const codeAst = parseJs(codeString, { sourceType: 'module' });
+  let key;
+  let name;
+  traverse(codeAst, {
+    ExportNamedDeclaration(path) {
+      key = path.node.declaration.declarations[0].id.name;
+      // TODO: check if there is an override
+      name = key;
+    },
+  });
+  return { key, name, codeAst };
+}
+
 export function processStories(data) {
   const stories = [];
 
@@ -11,24 +25,25 @@ export function processStories(data) {
     const { node } = event;
     if (event.entering && node.type === 'code_block') {
       if (node.info === 'js story') {
-        const storyAst = parseJs(node.literal, { sourceType: 'module' });
-        let key;
-        let name;
-        traverse(storyAst, {
-          ExportNamedDeclaration(path) {
-            key = path.node.declaration.declarations[0].id.name;
-            // TODO: check if there is an override
-            name = key;
-          },
-        });
+        const storyData = extractStoryData(node.literal);
         const htmlBlock = new Node('html_block');
-        htmlBlock.literal = `<Story name="${name}"></Story>`;
+        htmlBlock.literal = `<Story name="${storyData.name}"></Story>`;
         node.insertAfter(htmlBlock);
 
         stories.push({
-          key,
-          name,
-          codeAst: storyAst,
+          ...storyData,
+          displayedCode: node.literal,
+        });
+        node.unlink();
+      }
+      if (node.info === 'js preview-story') {
+        const storyData = extractStoryData(node.literal);
+        const htmlBlock = new Node('html_block');
+        htmlBlock.literal = `<Preview><Story name="${storyData.name}"></Story></Preview>`;
+        node.insertAfter(htmlBlock);
+
+        stories.push({
+          ...storyData,
           displayedCode: node.literal,
         });
         node.unlink();
