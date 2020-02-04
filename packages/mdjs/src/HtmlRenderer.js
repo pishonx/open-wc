@@ -9,7 +9,7 @@ export class HtmlRenderer extends CmHtmlRenderer {
     this.__givenIds = [];
   }
 
-  getHeadline(text) {
+  getHeadlineId(text) {
     let id = text
       .replace(allInvalidChars, '')
       .replace(/ /g, '-')
@@ -32,7 +32,7 @@ export class HtmlRenderer extends CmHtmlRenderer {
     if (entering) {
       const attrs = this.attrs(node);
       if (node.firstChild) {
-        attrs.push(['id', this.getHeadline(node.firstChild.literal)]);
+        attrs.push(['id', this.getHeadlineId(node.firstChild.literal)]);
       }
       this.cr();
       this.tag(tagname, attrs);

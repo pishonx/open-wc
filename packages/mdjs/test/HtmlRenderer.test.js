@@ -22,5 +22,8 @@ describe('HtmlRenderer', () => {
     expect(md('# A\n# A\n# A')).to.equal(
       '<h1 id="a">A</h1>\n<h1 id="a-1">A</h1>\n<h1 id="a-2">A</h1>',
     );
+    expect(md('# B\n# B\n# C')).to.equal(
+      '<h1 id="b">B</h1>\n<h1 id="b-1">B</h1>\n<h1 id="c">C</h1>',
+    );
   });
 });
