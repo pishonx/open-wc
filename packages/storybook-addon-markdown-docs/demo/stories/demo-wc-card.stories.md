@@ -9,6 +9,20 @@ export default { title: 'My docs' };
 
 Foo is great
 
+- looks like a game card
+- content in the front
+- data in the back
+
+## How to use
+
+```bash
+yarn add @foo/demo-wc-card
+```
+
+```js
+import '@foo/demo-wc-card/demo-wc-card.js';
+```
+
 ## Story
 
 ```js story
