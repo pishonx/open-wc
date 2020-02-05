@@ -1,3 +1,9 @@
+/** @typedef {import('./types').MarkdownResult} MarkdownResult */
+
+/**
+ * @param {MarkdownResult} data
+ * @returns {MarkdownResult}
+ */
 export function processJs(data) {
   let jsCode = '';
 
@@ -10,7 +16,6 @@ export function processJs(data) {
         jsCode += node.literal;
         node.unlink();
       }
-
     }
     event = walker.next();
   }

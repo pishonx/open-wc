@@ -1,4 +1,6 @@
-import { HtmlRenderer as CmHtmlRenderer } from './commonmark/index.js';
+/** @typedef {import('commonmark').Node} Node */
+
+import { HtmlRenderer as CmHtmlRenderer } from 'commonmark';
 
 const allInvalidChars = /[^a-zA-Z0-9 ]*/g;
 
@@ -9,8 +11,20 @@ export class HtmlRenderer extends CmHtmlRenderer {
     this.__givenIds = [];
   }
 
-  getHeadlineId(text) {
-    let id = text
+  /**
+   * Returns an id for a given headline
+   *
+   * @example
+   * this.getHeadlineId('My Headline');
+   * // return 'my-headline'
+   * this.getHeadlineId('My Headline');
+   * // return 'my-headline-1' as id was already taken
+   *
+   * @param {string} headline The given headline text
+   * @return {string} An appropriate id for a headline
+   */
+  getHeadlineId(headline) {
+    let id = headline
       .replace(allInvalidChars, '')
       .replace(/ /g, '-')
       .toLowerCase();
@@ -27,6 +41,12 @@ export class HtmlRenderer extends CmHtmlRenderer {
     return id;
   }
 
+  /**
+   * @override so we can add an id to the headline by default
+   *
+   * @param {Node} node Current node walking over
+   * @param {boolean} entering Entering a node or leaving it?
+   */
   heading(node, entering) {
     const tagname = `h${node.level}`;
     if (entering) {

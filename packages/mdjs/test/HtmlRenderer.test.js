@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 
 import chai from 'chai';
-import { Parser } from '../src/commonmark/index.js';
+import { Parser } from 'commonmark';
 import { HtmlRenderer } from '../src/HtmlRenderer.js';
 
 const { expect } = chai;

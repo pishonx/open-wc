@@ -3245,28 +3245,6 @@
   resolved "https://registry.yarnpkg.com/@open-wc/semantic-dom-diff/-/semantic-dom-diff-0.13.21.tgz#718b9ec5f9a98935fc775e577ad094ae8d8b7dea"
   integrity sha512-BONpjHcGX2zFa9mfnwBCLEmlDsOHzT+j6Qt1yfK3MzFXFtAykfzFjAgaxPetu0YbBlCfXuMlfxI4vlRGCGMvFg==
 
-"@open-wc/testing-karma-bs@file:./packages/testing-karma-bs":
-  version "1.3.34"
-  dependencies:
-    "@open-wc/testing-karma" "^3.2.34"
-    "@types/node" "^11.13.0"
-    karma-browserstack-launcher "^1.0.0"
-
-"@open-wc/testing-karma@file:./packages/testing-karma":
-  version "3.2.34"
-  dependencies:
-    "@open-wc/karma-esm" "^2.13.1"
-    axe-core "^3.3.1"
-    karma "^4.1.0"
-    karma-chrome-launcher "^3.1.0"
-    karma-coverage-istanbul-reporter "^2.0.0"
-    karma-mocha "^1.0.0"
-    karma-mocha-reporter "^2.0.0"
-    karma-mocha-snapshot "^0.2.1"
-    karma-snapshot "^0.6.0"
-    karma-source-map-support "^1.3.0"
-    mocha "^6.2.2"
-
 "@reach/router@^1.2.1":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@reach/router/-/router-1.2.1.tgz#34ae3541a5ac44fa7796e5506a5d7274a162be4e"
@@ -3931,6 +3909,11 @@
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
   integrity sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==
+
+"@types/commonmark@^0.27.4":
+  version "0.27.4"
+  resolved "https://registry.yarnpkg.com/@types/commonmark/-/commonmark-0.27.4.tgz#8f42990e5cf3b6b95bd99eaa452e157aab679b82"
+  integrity sha512-7koSjp08QxKoS1/+3T15+kD7+vqOUvZRHvM8PutF3Xsk5aAEkdlIGRsHJ3/XsC3izoqTwBdRW/vH7rzCKkIicA==
 
 "@types/connect@*":
   version "3.4.33"
@@ -7551,6 +7534,16 @@ commondir@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/commondir/-/commondir-1.0.1.tgz#ddd800da0c66127393cca5950ea968a3aaf1253b"
   integrity sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
+
+commonmark@^0.29.1:
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/commonmark/-/commonmark-0.29.1.tgz#fdbf5970ca23600f4a27487e30eed43b66b83ef5"
+  integrity sha512-DafPdNYFXoEhsSiR4O+dJ45UJBfDL4cBTks4B+agKiaWt7qjG0bIhg5xuCE0RqU71ikJcBIf4/sRHh9vYQVF8Q==
+  dependencies:
+    entities "~1.1.1"
+    mdurl "~1.0.1"
+    minimist "~1.2.0"
+    string.prototype.repeat "^0.2.0"
 
 compare-func@^1.3.1:
   version "1.3.2"

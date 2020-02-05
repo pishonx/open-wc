@@ -1,6 +1,8 @@
+/** @typedef {import('./types').MarkdownResult} MarkdownResult */
+
 import { parse as parseJs } from '@babel/parser';
 import traverse from '@babel/traverse';
-import { Node } from './commonmark/index.js';
+import { Node } from 'commonmark';
 
 function extractStoryData(codeString) {
   const codeAst = parseJs(codeString, { sourceType: 'module' });
@@ -16,6 +18,10 @@ function extractStoryData(codeString) {
   return { key, name, codeAst };
 }
 
+/**
+ * @param {MarkdownResult} data
+ * @returns {MarkdownResult}
+ */
 export function processStories(data) {
   const stories = [];
 

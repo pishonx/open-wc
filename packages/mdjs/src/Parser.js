@@ -1,12 +1,15 @@
+/** @typedef {import('./types').Story} Story */
+/** @typedef {import('./types').MarkdownResult} MarkdownResult */
+
 // import traverse from '@babel/traverse';
-import { Parser as CmParser } from './commonmark/index.js';
+import { Parser as CmParser } from 'commonmark';
 import { processJs } from './processJs.js';
 import { processStories } from './processStories.js';
 // import { HtmlRenderer } from './HtmlRenderer.js';
 
 export class Parser {
   constructor() {
-    this.cmParser = new CmParser();
+    this.cmParser = new CmParser({});
     // this.options = {
     //   defaultProcessors: [
     //     processJs,
@@ -15,7 +18,14 @@ export class Parser {
     // }
   }
 
+  /**
+   * Converts a string into an object with
+   *
+   * @param {string} source
+   * @returns {MarkdownResult}
+   */
   parse(source) {
+    /** @type {MarkdownResult} */
     let data = {
       mdAst: this.cmParser.parse(source),
     };

@@ -2,7 +2,7 @@
 
 import chai from 'chai';
 import fs from 'fs';
-import { Parser } from '../src/commonmark/index.js';
+import { Parser } from 'commonmark';
 import { MdRenderer } from '../src/MdRenderer.js';
 
 const { expect } = chai;
