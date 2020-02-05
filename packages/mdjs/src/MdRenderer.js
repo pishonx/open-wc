@@ -1,4 +1,4 @@
-export class MdRenderer {
+class MdRenderer {
   constructor(options) {
     this.options = options || {};
   }
@@ -83,3 +83,7 @@ export class MdRenderer {
     return md.join('\n');
   }
 }
+
+module.exports = {
+  MdRenderer,
+};

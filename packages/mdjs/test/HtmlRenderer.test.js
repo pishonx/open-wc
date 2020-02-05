@@ -1,8 +1,8 @@
 /* eslint-disable no-template-curly-in-string */
 
-import chai from 'chai';
-import { Parser } from 'commonmark';
-import { HtmlRenderer } from '../src/HtmlRenderer.js';
+const chai = require('chai');
+const { Parser } = require('commonmark');
+const { HtmlRenderer } = require('../src/HtmlRenderer.js');
 
 const { expect } = chai;
 

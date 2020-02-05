@@ -1,7 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
 
-import chai from 'chai';
-import { Parser } from '../src/Parser.js';
+const chai = require('chai');
+const { Parser } = require('../src/Parser.js');
 
 const { expect } = chai;
 

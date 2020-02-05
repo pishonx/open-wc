@@ -2,12 +2,12 @@
 /** @typedef {import('./types').MarkdownResult} MarkdownResult */
 
 // import traverse from '@babel/traverse';
-import { Parser as CmParser } from 'commonmark';
-import { processJs } from './processJs.js';
-import { processStories } from './processStories.js';
+const { Parser: CmParser } = require('commonmark');
+const { processJs } = require('./processJs.js');
+const { processStories } = require('./processStories.js');
 // import { HtmlRenderer } from './HtmlRenderer.js';
 
-export class Parser {
+class Parser {
   constructor() {
     this.cmParser = new CmParser({});
     // this.options = {
@@ -50,3 +50,7 @@ export class Parser {
     return data;
   }
 }
+
+module.exports = {
+  Parser,
+};

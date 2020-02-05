@@ -4,7 +4,7 @@
  * @param {MarkdownResult} data
  * @returns {MarkdownResult}
  */
-export function processJs(data) {
+function processJs(data) {
   let jsCode = '';
 
   const walker = data.mdAst.walker();
@@ -22,3 +22,7 @@ export function processJs(data) {
 
   return { ...data, jsCode };
 }
+
+module.exports = {
+  processJs,
+};

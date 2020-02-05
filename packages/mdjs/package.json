@@ -19,7 +19,7 @@
     "prepublishOnly": "npm run build && ../../scripts/insert-header.js",
     "start": "npm run build && node ./dist/create.js",
     "test": "npm run test:node",
-    "test:node": "mocha --require @babel/register",
+    "test:node": "mocha",
     "test:update-snapshots": "node -r @babel/register ./test/update-snapshots.js",
     "test:watch": "onchange 'src/**/*.js' 'test/**/*.js' -- npm run test --silent"
   },
@@ -33,17 +33,9 @@
     "@babel/parser": "^7.7.0",
     "@babel/traverse": "^7.7.0",
     "@types/commonmark": "^0.27.4",
-    "commonmark": "^0.29.1",
-    "entities": "~2.0",
-    "mdurl": "~1.0.1",
-    "minimist": "~1.2.0",
-    "string.prototype.repeat": "^0.2.0"
+    "commonmark": "^0.29.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.7.0",
-    "@babel/core": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "babel-plugin-transform-dynamic-import": "^2.1.0",
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
     "onchange": "^5.2.0",

@@ -1,10 +1,10 @@
 /** @typedef {import('commonmark').Node} Node */
 
-import { HtmlRenderer as CmHtmlRenderer } from 'commonmark';
+const { HtmlRenderer: CmHtmlRenderer } = require('commonmark');
 
 const allInvalidChars = /[^a-zA-Z0-9 ]*/g;
 
-export class HtmlRenderer extends CmHtmlRenderer {
+class HtmlRenderer extends CmHtmlRenderer {
   constructor() {
     super();
     this.__counter = 0;
@@ -62,3 +62,7 @@ export class HtmlRenderer extends CmHtmlRenderer {
     }
   }
 }
+
+module.exports = {
+  HtmlRenderer,
+};

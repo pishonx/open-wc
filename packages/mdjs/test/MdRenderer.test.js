@@ -1,9 +1,9 @@
 /* eslint-disable no-template-curly-in-string */
 
-import chai from 'chai';
-import fs from 'fs';
-import { Parser } from 'commonmark';
-import { MdRenderer } from '../src/MdRenderer.js';
+const chai = require('chai');
+const fs = require('fs');
+const { Parser } = require('commonmark');
+const { MdRenderer } = require('../src/MdRenderer.js');
 
 const { expect } = chai;
 
