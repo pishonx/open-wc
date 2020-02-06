@@ -17,7 +17,7 @@ It does so by "annotating" JavaScript that should execute in Markdown.
 
 ```js
 import { fs } from 'fs';
-import { Parser, HtmlRenderer } from '@mdjs/core';
+import { renderReadme } from '@mdjs/core';
 
 const reader = new Parser();
 const writer = new HtmlRenderer();

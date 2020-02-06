@@ -1,8 +1,8 @@
 const { parse } = require('@babel/parser');
 const { compileMdx } = require('./compile-mdx');
 
-const { Parser } = require('../../mdjs/dist/Parser.js');
-const { HtmlRenderer } = require('../../mdjs/dist/HtmlRenderer.js');
+const { Parser } = require('../../mdjs/index.js');
+const { HtmlRenderer } = require('../../mdjs/index.js');
 
 /**
  * @param {string} filePath

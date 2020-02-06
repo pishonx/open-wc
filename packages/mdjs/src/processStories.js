@@ -15,7 +15,7 @@ function extractStoryData(codeString) {
       name = key;
     },
   });
-  return { key, name, codeAst };
+  return { key, name, codeAst, codeString };
 }
 
 /**

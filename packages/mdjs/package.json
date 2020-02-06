@@ -14,20 +14,19 @@
   "author": "open-wc",
   "homepage": "https://github.com/open-wc/open-wc/",
   "scripts": {
-    "build": "rimraf dist && babel src --out-dir dist --copy-files --include-dotfiles",
-    "build:watch": "onchange 'src/**/*.js' 'test/**/*.js' -- npm run build --silent",
-    "prepublishOnly": "npm run build && ../../scripts/insert-header.js",
-    "start": "npm run build && node ./dist/create.js",
+    "prepublishOnly": "../../scripts/insert-header.js",
+    "start": "es-dev-server -c demo/server.js --root-dir ../../",
     "test": "npm run test:node",
     "test:node": "mocha",
-    "test:update-snapshots": "node -r @babel/register ./test/update-snapshots.js",
     "test:watch": "onchange 'src/**/*.js' 'test/**/*.js' -- npm run test --silent"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "keywords": [
-    "open-wc"
+    "open-wc",
+    "markdown",
+    "commonmark"
   ],
   "dependencies": {
     "@babel/parser": "^7.7.0",
@@ -38,7 +37,6 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.2.2",
-    "onchange": "^5.2.0",
-    "rimraf": "^3.0.0"
+    "onchange": "^5.2.0"
   }
 }

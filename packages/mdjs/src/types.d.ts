@@ -13,5 +13,6 @@ export interface Story {
   key: string;
   name: string;
   codeAst: File;
+  codeString: string,
   displayedCode: string;
 }
